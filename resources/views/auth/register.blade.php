@@ -42,6 +42,13 @@
             </div>
           </div>
         </div>
+        <div class="input-group mb-3">
+            <select class="custom-select" name="user_type">
+                <option disabled selected>----- Select user type -----</option>
+                <option value="customer">Customer</option>
+                <option value="vendor">Vendor</option>
+            </select>
+        </div>
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
