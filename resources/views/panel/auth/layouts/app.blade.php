@@ -20,6 +20,9 @@
     .login-logo a{
         color:white;
     }
+    .register-logo a{
+        color:white;
+    }
 </style>
 <body class="hold-transition login-page">
     <div class="login-box">
