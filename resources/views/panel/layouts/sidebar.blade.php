@@ -58,13 +58,29 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{url('/home')}}" class="nav-link">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fa fa-users"></i>
               <p>
-                Roles
+                Role
+                <i class="fas fa-angle-left right"></i>
+                {{-- <span class="badge badge-info right">6</span> --}}
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{url('/role/create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Role</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('/role/view')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Role</p>
+                </a>
+              </li>
+            </ul>
           </li>
           @endif
           @if (Auth()->user()->hasRole('vendor') || Auth()->user()->hasRole('admin') || Auth()->user()->hasRole('superadmin'))
