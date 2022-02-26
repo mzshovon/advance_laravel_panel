@@ -11,15 +11,20 @@
     <link rel="stylesheet" href="{{ asset('public/dist/css/adminlte.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-
-<body class="hold-transition sidebar-mini layout-fixed">
-    @include('panel.layouts.navbar')
-    @include('panel.layouts.sidebar')
-    <div class="content-wrapper">
+<style>
+    .login-page {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url('https://media.istockphoto.com/photos/abstract-futuristic-with-connection-lines-on-blue-background-plexus-picture-id1285395672?b=1&k=20&m=1285395672&s=170667a&w=0&h=Wkn9h7EjOTLAAG8zSoTcnvrDrtFjTOPryJeIOBlD3r4=');
+    }
+    .login-logo a{
+        color:white;
+    }
+</style>
+<body class="hold-transition login-page">
+    <div class="login-box">
         @yield('content')
     </div>
-    @include('panel.layouts.footer')
-    <aside class="control-sidebar control-sidebar-dark"></aside>
     {{-- Javascript starts from here --}}
     <script src="{{ asset('public/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('public/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

@@ -16,9 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/vendor/login', function () {
-    return view('welcome');
+Route::get('/login', function () {
+    return view('panel.auth.login');
 });
+Route::post('/logout', 'LoginController@logout')->name('logout');
 Route::get('/admin/login', function () {
     return view('welcome');
 });
