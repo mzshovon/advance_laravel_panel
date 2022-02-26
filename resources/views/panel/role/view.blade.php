@@ -15,8 +15,6 @@
       </div>
     </div><!-- /.container-fluid -->
   </section>
-
-  <!-- Main content -->
   <section class="content">
     <div class="card">
       <div class="card-header">
