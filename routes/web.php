@@ -29,9 +29,10 @@ Route::group(['middleware'=>['auth']],function () {
     Route::get('/home', 'HomeController@index')->name('home');
     // --------------- Role routes ---------------------- //
     Route::get('/role/view', 'Admin\RoleController@view')->name('role-view');
-    Route::post('/role/create', 'Admin\RoleController@store')->name('role-create');
-    Route::post('/role/update', 'Admin\RoleController@update')->name('role-update');
-    Route::post('/role/delete', 'Admin\RoleController@delete')->name('role-delete');
+    Route::any('/role/create', 'Admin\RoleController@store')->name('role-create');
+    Route::any('/role/update/{id}', 'Admin\RoleController@update')->name('role-update');
+    Route::get('/role/delete/{id}', 'Admin\RoleController@delete')->name('role-delete');
+    Route::get('/role/permissions/{id}', 'Admin\RoleController@permissions_by_role')->name('role-permission');
     // --------------- Permission routes ---------------------- //
     Route::get('/permission/view', 'Admin\PermissionController@view')->name('permission-view');
     Route::post('/permission/create', 'Admin\PermissionController@store')->name('permission-create');
