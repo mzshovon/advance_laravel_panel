@@ -27,6 +27,7 @@
         </div>
       </div>
       <div class="card-body p-0">
+        @include('panel.layouts.alert')
         <table class="table table-striped projects">
             <thead>
                 <tr>
@@ -74,17 +75,17 @@
                         {{$role->created_at}}
                     </td>
                     <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
+                        <a class="btn btn-primary btn-sm" href="{{route('role-permission',['id'=>$role->id])}}">
+                            <i class="fas fa-key">
                             </i>
-                            View
+                            Permissions
                         </a>
-                        <a class="btn btn-info btn-sm" href="#">
+                        <a class="btn btn-info btn-sm" href="{{route('role-update',['id'=>$role->id])}}">
                             <i class="fas fa-pencil-alt">
                             </i>
                             Edit
                         </a>
-                        <a class="btn btn-danger btn-sm" href="#">
+                        <a class="btn btn-danger btn-sm" href="{{route('role-delete',['id'=>$role->id])}}">
                             <i class="fas fa-trash">
                             </i>
                             Delete
@@ -92,52 +93,16 @@
                     </td>
                 </tr> 
                 @empty
-                <tr>
-                    <td>
-                        
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td class="project_progress">
-                        <div class="progress progress-sm">
-                            <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57" aria-volumemin="0" aria-volumemax="100" style="width: 57%">
-                            </div>
-                        </div>
-                        <small>
-                            57% Complete
-                        </small>
-                    </td>
-                    <td class="project-state">
-                        <span class="badge badge-success">Success</span>
-                    </td>
-                    <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="#">
-                            <i class="fas fa-folder">
-                            </i>
-                            View
-                        </a>
-                        <a class="btn btn-info btn-sm" href="#">
-                            <i class="fas fa-pencil-alt">
-                            </i>
-                            Edit
-                        </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
-                    </td>
+                <tr class="text-center">
+                    No Data available!
                 </tr>
                 @endforelse
-
             </tbody>
         </table>
+        <div style="float: right">
+          {{$roles->links()}}
+        </div>
       </div>
-      <!-- /.card-body -->
     </div>
-    <!-- /.card -->
-
   </section>
 @endsection
