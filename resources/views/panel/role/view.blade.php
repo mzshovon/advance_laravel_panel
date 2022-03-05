@@ -47,6 +47,7 @@
                         Create At
                     </th>
                     <th style="width: 20%">
+                      Actions
                     </th>
                 </tr>
             </thead>
