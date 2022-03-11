@@ -9,7 +9,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Projects</li>
+            <li class="breadcrumb-item active">Roles</li>
           </ol>
         </div>
       </div>
@@ -18,7 +18,7 @@
   <section class="content">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Projects</h3>
+        <h3 class="card-title">Roles</h3>
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fas fa-minus"></i></button>
@@ -53,7 +53,7 @@
             </thead>
             <tbody>
                 @forelse ($roles as $role)
-                <tr>
+                <tr data-id={{$role->id}}>
                     <td>
                         {{$role->id}}
                     </td>
@@ -86,11 +86,12 @@
                             </i>
                             Edit
                         </a>
-                        <a class="btn btn-danger btn-sm" href="{{route('role-delete',['id'=>$role->id])}}">
+                        {{-- </a>href="{{route('role-delete',['id'=>$role->id])}}" --}}
+                        <button class="btn btn-danger btn-sm" onclick ="deleteRole({{$role->id}})" >
                             <i class="fas fa-trash">
                             </i>
                             Delete
-                        </a>
+                        </button>
                     </td>
                 </tr> 
                 @empty
@@ -106,4 +107,38 @@
       </div>
     </div>
   </section>
+@endsection
+@section("scripts")
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  function deleteRole(id) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+          url: "{{route('role-delete',['id'=>"+id+"])}}",
+          method: "POST",
+          data: {'id': id, _token: '{{csrf_token()}}', 'page': '{{app('request')->page}}'},
+          dataType: "json",
+          success: function (data,statusMessage,status) {
+            $('tr[data-id='+id+']').remove();
+              if(status.status==200){
+                Swal.fire(
+                  'Deleted!',
+                  'Your selected role has been deleted.',
+                  'success'
+                  )
+              };
+          }
+      });
+    }
+  })}
+</script>
 @endsection
