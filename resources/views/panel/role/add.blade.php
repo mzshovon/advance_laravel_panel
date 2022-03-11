@@ -81,6 +81,7 @@
         $(".display_name").val('');
         $("input[name=submit]").prop('disabled',true);
       } else{
+        $(".toasts-top-right").remove();
         $(this).addClass('is-valid');
         $(".display_name").val($(this).val().charAt(0).toUpperCase()+$(this).val().slice(1));
         $("input[name=submit]").prop('disabled',false);

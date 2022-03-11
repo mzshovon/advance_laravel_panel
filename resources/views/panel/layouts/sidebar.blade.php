@@ -50,13 +50,29 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{url('/home')}}" class="nav-link">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fa fa-unlock"></i>
               <p>
-                Permissions
+                Permission
+                <i class="fas fa-angle-left right"></i>
+                {{-- <span class="badge badge-info right">6</span> --}}
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('permission-create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Permission</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('permission-view')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Permission</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">

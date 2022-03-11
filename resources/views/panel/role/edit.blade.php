@@ -60,7 +60,6 @@
             <div class="card">
               <div class="card-header">
                 <input type="submit" class="btn btn-info" name="submit" value="Submit"/>
-                <input type="reset" class="btn btn-danger" name="reset" value="Reset"/>
               </div>
             </div>
           </div>
@@ -87,10 +86,6 @@
         $(".display_name").val($(this).val().charAt(0).toUpperCase()+$(this).val().slice(1));
         $("input[name=submit]").prop('disabled',false);
       }
-    });
-    $("input[name=reset]").on("click",function(){
-      $(".form-data-role").find("input").find("textarea").val('');
-      $(".name").addClass('is-invalid');
     });
   </script>
 @endsection

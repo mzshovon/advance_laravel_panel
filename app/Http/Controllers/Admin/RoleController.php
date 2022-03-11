@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use App\Models\Role;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use PHPUnit\Util\Json;
 
 class RoleController extends Controller
 {
@@ -84,17 +87,22 @@ class RoleController extends Controller
             return view('panel.role.edit',$data);
         }
     }
-    public function delete($id) {
-        $message = array();
-        $role = Role::find($id);
-        if($role->delete()){
-            $message['alert'] = 'success';
-            $message['alert_message'] = 'Role deleted successfully!';
-        } else {
-            $message['alert'] = 'danger';
-            $message['alert_message'] = 'Something went wrong! Please contact with admin';
+    public function delete(Request $request) {
+        if($request->ajax()){
+            $id = $request->id;
+            $message = array();
+            $role = Role::find($id);
+            if($role->delete()){
+                $message['alert'] = 'success';
+                $message['alert_message'] = 'Role deleted successfully!';
+                $staus_code = 200;
+            } else {
+                $message['alert'] = 'danger';
+                $message['alert_message'] = 'Something went wrong! Please contact with admin';
+                $staus_code = 501;
+            }
+            return Response::json($message,$staus_code);
         }
-        return redirect()->back()->with('message', $message);
     }
     public function permissions_by_role($id) {
         $data = array();
