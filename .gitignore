@@ -16,3 +16,4 @@ npm-debug.log
 yarn-error.log
 db-data
 docker-compose.yml
+storage/nginx
